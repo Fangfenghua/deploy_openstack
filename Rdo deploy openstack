@@ -1,0 +1,24 @@
+QA:
+Q: rabbitmq 启动失败
+rabbitmq-server.service - RabbitMQ broker
+   Loaded: loaded (/usr/lib/systemd/system/rabbitmq-server.service; enabled)
+   Active: failed (Result: exit-code) since Sat 2015-03-14 02:24:02 EDT; 42s ago
+  Process: 11418 ExecStop=/usr/lib/rabbitmq/bin/rabbitmqctl stop (code=exited, status=2)
+  Process: 11380 ExecStart=/usr/lib/rabbitmq/bin/rabbitmq-server (code=exited, status=1/FAILURE)
+ Main PID: 11380 (code=exited, status=1/FAILURE)
+
+Mar 14 02:24:02 kuber-minion rabbitmqctl[11418]: attempted to contact: ['rabbit@kuber-minion']
+Mar 14 02:24:02 kuber-minion rabbitmqctl[11418]: rabbit@kuber-minion:
+Mar 14 02:24:02 kuber-minion rabbitmqctl[11418]: * unable to connect to epmd (port 4369) on kuber-minion: address (cannot connect to host/port)
+Mar 14 02:24:02 kuber-minion rabbitmqctl[11418]: current node details:
+Mar 14 02:24:02 kuber-minion rabbitmqctl[11418]: - node name: 'rabbitmqctl11418@kuber-minion'
+Mar 14 02:24:02 kuber-minion rabbitmqctl[11418]: - home dir: /var/lib/rabbitmq
+Mar 14 02:24:02 kuber-minion rabbitmqctl[11418]: - cookie hash: xX/7rJdKTRgLE1mWL5Y9pQ==
+Mar 14 02:24:02 kuber-minion systemd[1]: rabbitmq-server.service: control process exited, code=exited status=2
+Mar 14 02:24:02 kuber-minion systemd[1]: Failed to start RabbitMQ broker.
+Mar 14 02:24:02 kuber-minion systemd[1]: Unit rabbitmq-server.service entered failed state.
+[root@kuber-minion repo]# /usr/bin/systemctl start rabbitmq-server
+Job for rabbitmq-server.service failed. See 'systemctl status rabbitmq-server.service' and 'journalctl -xn' for details.
+[root@kuber-minion repo]# journalctl -xn
+
+A:问题，/etc/hosts中设置的hostname和ip之间对应关系不正确
