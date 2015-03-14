@@ -1,0 +1,2 @@
+# deploy_openstack
+记录在学习Openstack部署过程中的点滴
