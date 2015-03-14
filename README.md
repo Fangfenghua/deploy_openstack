@@ -1,5 +1,5 @@
-# deploy_openstack
-记录在学习Openstack部署过程中的点滴
+# deploy_openstack   
+记录在学习Openstack部署过程中的点滴，主要是逐步在容器内部署openstack
 
 前提条件：
 centos7, docker, centos:7docker镜像(docker pull centos)
