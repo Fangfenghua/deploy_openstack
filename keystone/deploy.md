@@ -1,2 +1,2 @@
 1 install keystone service
-yum install openstack-keystone.noarch
+yum install python-keystone.noarch openstack-keystone.noarch   
