@@ -1,0 +1,38 @@
+[ml2]
+type_drivers = flat,vxlan,vlan
+tenant_network_types = flat,vxlan,vlan
+mechanism_drivers = linuxbridge,l2population
+
+[ml2_type_flat]
+flat_networks = ovs-net
+
+[ml3_type_vlan]
+network_vlan_ranges = ovs-net:1000:2999
+# Example: network_vlan_ranges = physnet1:1000:2999,physnet2
+
+[ml2_type_gre]
+# tunnel_id_ranges =
+
+[ml2_type_vxlan]
+vxlan_group =
+vni_ranges = 1:1000
+
+
+[securitygroup]
+enable_security_group = True
+enable_ipset = True
+firewall_driver = neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
+
+[vxlan]
+enable_vxlan = True
+vxlan_group =
+l2_population = True
+
+
+[agent]
+tunnel_types = vxlan
+vxlan_udp_port = 4789
+
+
+[l2pop]
+agent_boot_time = 180
