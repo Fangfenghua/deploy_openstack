@@ -1,0 +1,20 @@
+- hosts: glance
+  roles:
+    - glance
+  tags: glance
+
+- hosts: controller
+  roles:
+    - nova
+    - neutron
+  vars:
+   group_name: controller
+  tags: controller
+
+- hosts: compute
+  roles:
+    - nova
+    - neutron
+  vars:
+   group_name: compute
+  tags: compute
