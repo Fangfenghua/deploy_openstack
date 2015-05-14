@@ -1,0 +1,16 @@
+---
+- name: Bringing up nova controller service(s)
+  docker_compose:
+    project_name: nova
+    compose_file: "{{ koalla_directory }}/compose/nova-api-conductor-scheduler-consoleauth-novncproxy.yml"
+    command: up
+    no_recreate: true
+  when: inventory_hostname in groups['controller']
+
+- name: Bringing up nova compute service(s)
+  docker_compose:
+    project_name: nova
+    compose_file: "{{ koalla_directory }}/compose/nova-api-conductor-scheduler-consoleauth-novncproxy.yml"
+    command: up
+    no_recreate: true
+  when: inventory_hostname in groups['compute']
