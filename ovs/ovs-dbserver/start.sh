@@ -3,7 +3,7 @@
 
 DB_FILE=/etc/openvswitch/conf.db
 DB_SCHEMA=/usr/share/openvswitch/vswitch.ovsschema
-
+UNIXSOCK=/var/run/openvswitch
 
 ovsdb_tool () {
     ovsdb-tool -vconsole:off "$@"
@@ -41,7 +41,6 @@ upgrade_db () {
 
 start_ovsdb()
 {
-    UNIXSOCK=/var/run/openvswitch
     if test ! -e "$UNIXSOCK";then
         mkdir $UNIXSOCK
     fi
