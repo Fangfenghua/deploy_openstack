@@ -8,8 +8,6 @@ ovsdbserver:
    image: kollaglue/centos-rdo-ovs-dbserver:kilo
    name: ovsdbserver
    restart: always
-   volumes:
-     - /run:/run
    volumes_from:
      - ovsdbserverdata
 
@@ -17,6 +15,5 @@ ovsvswitchd:
    image: kollaglue/centos-rdo-ovs-vswitchd:kilo
    name: ovsvswitchd
    restart: always
-   volumes:
-    - /run:/run
-~                 
+   volumes_from:
+     - ovsdbserverdata   
